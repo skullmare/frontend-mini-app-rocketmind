@@ -1,0 +1,249 @@
+/* === ПОДКЛЮЧЕНИЕ ШРИФТОВ === */
+        * {
+            font-family: 'Roboto', sans-serif;
+            color: #E0E0E0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: Roboto Condensed;
+            font-weight: 500;
+            font-style: Medium;
+            font-size: 32px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: uppercase;
+            color: #E0E0E0;
+        }
+
+        /* Full-screen */
+
+        body {
+            max-width: 500px;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0;
+            overflow: hidden;
+            background: #121212;
+            position: relative;
+            /* Для псевдоэлементов */
+        }
+
+        .carousel {
+            height: 100vh;
+            width: 100%;
+        }
+
+        .carousel-inner,
+        .carousel-item {
+            height: 100%;
+            width: 100%;
+            background-color: #121212;
+            position: relative;
+        }
+
+        /* Navbar */
+        .navbar {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #121212;
+            z-index: 1000;
+            padding: 0;
+            border-bottom: 0.75px solid #3E3E3E;
+        }
+
+        .navbar-brand {
+            padding: 0;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+        }
+
+        /* Slide content */
+        .slide-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 45.75px;
+            box-sizing: border-box;
+            /* Изменено: теперь контент может прокручиваться */
+            overflow-y: auto;
+            overflow-x: hidden;
+
+        }
+
+        .carousel-item::before,
+        .carousel-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 0.75px;
+            background: #3E3E3E;
+            z-index: 1000;
+        }
+
+        .carousel-item::before {
+            left: 12px;
+        }
+
+        .carousel-item::after {
+            right: 12px;
+        }
+
+        /* Content blocks */
+        .content-block {
+            width: 100%;
+            padding: 20px;
+            border-bottom: 0.75px solid #3E3E3E;
+        }
+
+        .content-block-last {
+            border-bottom: none;
+        }
+
+        /* Button block */
+        .button-block {
+            width: 100%;
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 0.75px solid #3E3E3E;
+            border-bottom: 0.75px solid #3E3E3E;
+            margin-top: auto;
+            z-index: 40;
+            background-color: #121212;
+            /* Добавлено: фиксированная позиция внизу слайда */
+            bottom: 0;
+        }
+
+        .button-block button {
+            background: #FFCC00;
+            color: black;
+            border: none;
+            height: 44px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto;
+            font-family: Roboto Condensed;
+            font-weight: 700;
+            font-style: Bold;
+            font-size: 14px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: uppercase;
+        }
+
+        /* === ИНДИКАТОРЫ === */
+        /* Изменено: индикаторы теперь внутри блока с кнопкой */
+        .indicators-container {
+            width: 100%;
+            padding: 15px 30px;
+            text-align: center;
+            background-color: #121212;
+            bottom: 0;
+            z-index: 30;
+        }
+
+        .carousel-indicators {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            z-index: 15;
+            height: 8px;
+            line-height: 1;
+        }
+
+        .carousel-indicators button {
+            width: 6px !important;
+            height: 6px !important;
+            border-radius: 50%;
+            background-color: #3E3E3E;
+            opacity: 1;
+            margin: 0;
+            padding: 0;
+            border: none;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            display: block;
+            overflow: hidden;
+            text-indent: -9999px;
+        }
+
+        .carousel-indicators .active {
+            width: 8px !important;
+            height: 8px !important;
+            background-color: #A172F8;
+        }
+
+        .glow {
+            position: absolute;
+            top: -70px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: #A172F880;
+            filter: blur(60px);
+            z-index: 1001;
+        }
+
+        .slide-1-img-boy {
+            position: relative;
+            top: 0px;
+            left: -30px;
+            margin-top: -20px;
+            /* Отрицательный margin вместо transform */
+            transform: rotate(11deg);
+            width: 95px;
+            z-index: 999;
+        }
+
+        .slide-1-img-map-board {
+            position: relative;
+            margin-top: -110px;
+            /* Отрицательный margin вместо transform */
+            top: 0px;
+            margin-left: -5%;
+            width: 110%;
+            z-index: 888;
+        }
+
+        .slide-1-img-girl {
+            position: relative;
+            left: 75%;
+            margin-top: -170px;
+            /* Отрицательный margin вместо transform */
+            transform: rotate(11deg);
+            width: 126px;
+            z-index: 999;
+        }
+
+        .slide-2-img {
+            position: relative;
+            left: 85%;
+            top: -60px;
+            transform: rotate(15deg);
+            width: 176px;
+            z-index: 999;
+        }

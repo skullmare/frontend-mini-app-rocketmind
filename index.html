@@ -509,7 +509,7 @@
                         </div>
                     </div>
 
-                    <div class="button-block"><button class="">НАЧАТЬ</button></div>
+                    <div class="button-block"><button id="button-go" class="">НАЧАТЬ</button></div>
                     <div class="indicators-container">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#fullScreenCarousel" data-bs-slide-to="0"
@@ -532,6 +532,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
+        document.querySelector('#button-go').addEventListener('click', () => {
+            window.location.href = 'agents_list.html';
+        });
         document.addEventListener('DOMContentLoaded', () => {
             const carouselElement = document.getElementById('fullScreenCarousel');
             const carousel = new bootstrap.Carousel(carouselElement, {

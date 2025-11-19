@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full-Screen Adaptive Slider with Bootstrap and Transparent Logo Menu</title>
+    <title>Марк</title>
+
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
     <style>
         * {
@@ -19,20 +17,14 @@
             color: #E0E0E0;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Roboto Condensed', sans-serif;
             font-weight: 500;
             text-transform: uppercase;
             color: #E0E0E0;
         }
 
-        html,
-        body {
+        html, body {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -46,7 +38,6 @@
             flex-direction: column;
             max-width: 500px;
             margin: 0 auto;
-            background: #121212;
         }
 
         main {
@@ -62,30 +53,15 @@
             border-bottom: 0.75px solid #3E3E3E;
         }
 
-        .navbar-brand {
-            padding: 0;
-        }
-
-        .navbar-brand img {
-            height: 45px;
-        }
-
-        .glow {
-            position: absolute;
-            top: -70px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: #A172F880;
-            filter: blur(60px);
-            z-index: 1001;
+        .prev img {
+            margin-left: 15px;
+            height: 24px;
         }
 
         .navbar-account {
             width: 45px;
             height: 45px;
             border-left: 0.75px solid #3E3E3E;
-            color: #E0E0E0;
             text-decoration: none;
         }
 
@@ -97,9 +73,22 @@
             height: 45px;
             border: 0.75px solid #3E3E3E;
             border-radius: 50%;
-            text-align: center;
         }
 
+        /* Glow */
+        .glow {
+            position: absolute;
+            top: -70px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: #A172F880;
+            filter: blur(60px);
+            z-index: 1001;
+            pointer-events: none;
+        }
+
+        /* Content blocks */
         .content-block {
             width: 100%;
             padding: 20px;
@@ -112,6 +101,38 @@
             border-bottom: none;
         }
 
+        .agent-img {
+            width: 90px;
+            flex-shrink: 0;
+        }
+
+        .agent-label {
+            color: #A172F8;
+            font-family: 'Roboto Condensed';
+            font-weight: 500;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .agent-title {
+            font-family: 'Roboto Condensed';
+            font-weight: 500;
+            font-size: 17px;
+            text-transform: uppercase;
+            color: #E0E0E0;
+            line-height: 1.2;
+            margin: 2px 0 0;
+        }
+
+        .description-text {
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 130%;
+            color: #A9A9A9;
+            margin: 0 0 12px 20px;
+        }
+
+        /* Bottom button */
         .button-block {
             width: 100%;
             padding: 20px 30px;
@@ -133,63 +154,58 @@
             width: 100%;
             max-width: 500px;
             border-radius: 4px;
-            display: block;
             margin: 0 auto;
+            display: block;
             font-family: 'Roboto Condensed', sans-serif;
             font-weight: 700;
             font-size: 14px;
             text-transform: uppercase;
         }
 
-        .prev img {
-            margin-left: 15px;
-            height: 24px;
+        .agent-content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .agent-text-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar">
         <div class="container-fluid d-flex justify-content-between px-0">
             <a class="prev" href="agents_list.html">
                 <img src="img/Rectangle 42215.svg" alt="назад">
             </a>
-            <a class="navbar-account" href="#">
+            <a class="navbar-account" href="profile.html">
                 <div class="account-icon">
-                    <img src="img/setting_icon.svg" alt="">
+                    <img src="img/setting_icon.svg" alt="settings">
                 </div>
             </a>
         </div>
     </nav>
+
     <div class="glow"></div>
+
     <main>
-
-
         <div class="content-block">
-            <div class="d-flex align-items-center justify-content-between" style="gap: 15px;">
-                <div class="d-flex">
-                    <div style="position: relative;">
-                        <img src="img/Mark.png" alt="Марк" style="width: 90px; flex-shrink: 0;">
-                    </div>
-
-                    <div style="display: flex; flex-direction: column; justify-content: center;">
-                        <span
-                            style="color: #A172F8; font-family: 'Roboto Condensed'; font-weight: 500; font-size: 13px; text-transform: uppercase;">МАРК</span>
-                        <span
-                            style="font-family: 'Roboto Condensed'; font-weight: 500; font-size: 17px; text-transform: uppercase; color: #E0E0E0; line-height: 1.2;margin: 2px 0 0 0;">АРХИТЕКТОР
-                            <br>БИЗНЕС-МОДЕЛЕЙ</span>
-                    </div>
+            <div class="agent-content-wrapper">
+                <img src="img/Mark.png" alt="Марк" class="agent-img">
+                <div class="agent-text-content">
+                    <span class="agent-label">МАРК</span>
+                    <span class="agent-title">АРХИТЕКТОР<br>БИЗНЕС-МОДЕЛЕЙ</span>
                 </div>
             </div>
         </div>
 
         <div class="content-block content-block-last">
-            <p style="font-weight: 300; font-size: 16px; line-height: 130%; color: #A9A9A9; margin: 0px 0px 12px 20px;">
-                Формулирует идеи платформенного <br>развития, помогает определить<br> роли участников, сценарии<br>
-                монетизации и взаимодействия.
-                <br><br>
-                Создаёт архитектуру экосистемы <br>продукта, объединяя ценность,<br> технологию и стратегию в единую
-                <br>модель бизнеса.
+            <p class="description-text">
+                Формулирует идеи платформенного <br>развития, помогает определить<br> роли участников, сценарии<br>монетизации и взаимодействия.
+                <br><br>Создаёт архитектуру экосистемы <br>продукта, объединяя ценность,<br> технологию и стратегию в единую<br>модель бизнеса.
             </p>
         </div>
     </main>
@@ -199,14 +215,11 @@
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
-        document.querySelector('#button-go').addEventListener('click', () => {
+        document.getElementById('button-go').addEventListener('click', function() {
             window.location.href = 'chat.html';
         });
     </script>
 </body>
-
 </html>

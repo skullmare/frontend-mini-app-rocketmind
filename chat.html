@@ -1,41 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чат с Сергеем</title>
+    <title>Чат</title>
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        * {
-            font-family: 'Roboto', sans-serif;
-            color: #E0E0E0;
+        :root {
+            --bg-primary: #121212;
+            --text-primary: #E0E0E0;
+            --text-secondary: #888888;
+            --border-color: #3E3E3E;
+            --incoming-bg: #2D2D2D;
+            --outgoing-bg: #A172F8;
+            --outgoing-text: #FFFFFF;
+            --glow-color: #A172F880;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        * {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-primary);
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Roboto Condensed', sans-serif;
             font-weight: 500;
             text-transform: uppercase;
-            color: #E0E0E0;
+            color: var(--text-primary);
         }
 
-        html,
-        body {
+        html, body {
             height: 100%;
             margin: 0;
             padding: 0;
-            background: #121212;
+            background: var(--bg-primary);
             overflow-x: hidden;
         }
 
@@ -45,27 +49,24 @@
             flex-direction: column;
             max-width: 500px;
             margin: 0 auto;
-            background: #121212;
+            background: var(--bg-primary);
         }
 
         main {
             flex: 1;
             padding: 12px 16px;
             overflow-y: auto;
-            /* уже было */
             display: flex;
             flex-direction: column;
             gap: 12px;
             height: 100%;
-            /* Эти 3 строки — магия плавной прокрутки как в мессенджерах */
             scroll-behavior: smooth;
             scrollbar-width: thin;
             scrollbar-color: #555 transparent;
             z-index: 1002;
-
         }
 
-        /* Красивый скроллбар для WebKit (Chrome, Safari, новые Edge) */
+        /* WebKit scrollbar */
         main::-webkit-scrollbar {
             width: 6px;
         }
@@ -86,10 +87,10 @@
         /* Navbar */
         .navbar {
             width: 100%;
-            background: #121212;
+            background: var(--bg-primary);
             z-index: 1000;
             padding: 0;
-            border-bottom: 0.75px solid #3E3E3E;
+            border-bottom: 0.75px solid var(--border-color);
         }
 
         .prev img {
@@ -103,9 +104,10 @@
             right: -50px;
             width: 150px;
             height: 150px;
-            background: #A172F880;
+            background: var(--glow-color);
             filter: blur(60px);
             z-index: 1001;
+            pointer-events: none;
         }
 
         .glow-bottom {
@@ -113,17 +115,16 @@
             bottom: 0;
             width: 100%;
             height: 200px;
-            background: #A172F880;
+            background: var(--glow-color);
             filter: blur(180px);
             z-index: 1001;
             pointer-events: none;
-            /* ← FIX */
         }
 
         .navbar-account {
             width: 45px;
             height: 45px;
-            border-left: 0.75px solid #3E3E3E;
+            border-left: 0.75px solid var(--border-color);
         }
 
         .account-icon {
@@ -132,11 +133,11 @@
             justify-content: center;
             width: 45px;
             height: 45px;
-            border: 0.75px solid #3E3E3E;
+            border: 0.75px solid var(--border-color);
             border-radius: 50%;
         }
 
-        /* === СООБЩЕНИЯ === */
+        /* Messages */
         .message {
             max-width: 85%;
             padding: 10px 14px;
@@ -147,22 +148,19 @@
             word-wrap: break-word;
         }
 
-        /* Входящее сообщение (от собеседника) */
         .message.incoming {
             align-self: flex-start;
-            background: #2D2D2D;
+            background: var(--incoming-bg);
             border-bottom-left-radius: 4px;
         }
 
-        /* Исходящее сообщение (от тебя) */
         .message.outgoing {
             align-self: flex-end;
-            background: #A172F8;
-            color: #FFFFFF;
+            background: var(--outgoing-bg);
+            color: var(--outgoing-text);
             border-bottom-right-radius: 4px;
         }
 
-        /* Время сообщения */
         .message-time {
             font-size: 11px;
             opacity: 0.7;
@@ -174,42 +172,19 @@
             color: #E8DEF8;
         }
 
-        /* Нижняя панель ввода */
+        /* Input form */
         .form-block {
             width: 100%;
             padding: 11px 15px;
-            border-top: 0.75px solid #3E3E3E;
-            background-color: #121212;
+            border-top: 0.75px solid var(--border-color);
+            background-color: var(--bg-primary);
             display: flex;
             align-items: flex-end;
             gap: 12px;
             flex-shrink: 0;
             z-index: 1003;
-            box-sizing: border-box;
             min-height: 60px;
             transition: padding 0.2s ease;
-            /* Эти 3 строки — магия плавной прокрутки как в мессенджерах */
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #555 transparent;
-        }
-
-        /* Красивый скроллбар для WebKit (Chrome, Safari, новые Edge) */
-        .form-block::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .form-block::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .form-block::-webkit-scrollbar-thumb {
-            background: #555;
-            border-radius: 3px;
-        }
-
-        .form-block::-webkit-scrollbar-thumb:hover {
-            background: #777;
         }
 
         .block-question-field {
@@ -230,13 +205,12 @@
             resize: none;
             font-size: 16px;
             line-height: 1.45;
-            color: #E0E0E0;
+            color: var(--text-primary);
             overflow-y: hidden;
-            box-sizing: border-box;
         }
 
         .question-field::placeholder {
-            color: #888888;
+            color: var(--text-secondary);
         }
 
         .block-button-send {
@@ -262,13 +236,11 @@
         .typing-indicator {
             font-size: 15px;
             align-self: flex-start;
-            display: none;
-            /* скрыто по умолчанию */
             display: flex;
             align-items: end;
             gap: 4px;
             line-height: 0.8;
-            color: #E0E0E0;
+            color: var(--text-primary);
         }
 
         .dots {
@@ -279,35 +251,25 @@
         .dots span {
             width: 4px;
             height: 4px;
-            background: #E0E0E0;
+            background: var(--text-primary);
             border-radius: 50%;
             display: inline-block;
             animation: blink 1.4s infinite both;
         }
 
-        .dots span:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .dots span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .dots span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
+        .dots span:nth-child(1) { animation-delay: 0s; }
+        .dots span:nth-child(2) { animation-delay: 0.2s; }
+        .dots span:nth-child(3) { animation-delay: 0.4s; }
 
         @keyframes blink {
             0% {
                 opacity: 0.2;
                 transform: translateY(0px);
             }
-
             20% {
                 opacity: 1;
                 transform: translateY(-2px);
             }
-
             100% {
                 opacity: 0.2;
                 transform: translateY(0px);
@@ -323,7 +285,7 @@
                 <img src="img/Rectangle 42215.svg" alt="назад">
             </a>
             <div style="font-weight: 500; color: #BEBEBE; font-size: 16px;">СЕРГЕЙ</div>
-            <a class="navbar-account" href="#">
+            <a class="navbar-account" href="profile.html">
                 <div class="account-icon">
                     <img src="img/setting_icon.svg" alt="настройки">
                 </div>
@@ -334,108 +296,28 @@
     <div class="glow"></div>
 
     <main id="chat">
-        <!-- Входящее сообщение (ИИ) -->
         <div class="message incoming">
             Добрый день! Готов помочь вам продвинуться в развитии бизнеса. С чем хотите поработать сегодня? 😊
             <div class="message-time">12:34</div>
         </div>
 
-        <!-- Исходящее сообщение (пользователь) -->
         <div class="message outgoing">
             Привет! Думаю над масштабированием проекта, но пока не уверен, с чего лучше начать.
             <div class="message-time">12:36</div>
         </div>
-
-        <!-- Входящее сообщение (ИИ) -->
+        
         <div class="message incoming">
-            Отличный запрос. Для начала можно проанализировать текущие показатели: трафик, конверсии, стоимость
-            привлечения клиента. У вас уже есть какие-то данные?
-            <div class="message-time">12:38</div>
-        </div>
-
-        <!-- Исходящее сообщение (короткое, пользователь) -->
-        <div class="message outgoing">
-            Есть базовые метрики, но они не структурированы. Нужно разобраться.
-            <div class="message-time">12:40</div>
-        </div>
-
-        <!-- Входящее сообщение (длинное, ИИ) -->
-        <div class="message incoming">
-            Понял. Тогда предлагаю начать с создания простой воронки: источник → лид → квалификация → сделка. Это
-            позволит увидеть, где именно теряются клиенты. После этого можно будет подключить автоматизацию и
-            прогнозирование роста.
-            <div class="message-time">12:42</div>
-        </div>
-
-        <!-- Входящее сообщение (ИИ) -->
-        <div class="message incoming">
-            Кстати, если удобнее — могу провести экспресс-аудит текущей модели и предложить стратегию развития. Хотите
-            попробовать?
-            <div class="message-time">12:45</div>
-        </div>
-        <!-- Входящее сообщение (ИИ) -->
-        <div class="message incoming">
-            Добрый день! Готов помочь вам продвинуться в развитии бизнеса. С чем хотите поработать сегодня? 😊
-            <div class="message-time">12:34</div>
-        </div>
-
-        <!-- Исходящее сообщение (пользователь) -->
-        <div class="message outgoing">
-            Привет! Думаю над масштабированием проекта, но пока не уверен, с чего лучше начать.
-            <div class="message-time">12:36</div>
-        </div>
-
-        <!-- Входящее сообщение (ИИ) -->
-        <div class="message incoming">
-            Отличный запрос. Для начала можно проанализировать текущие показатели: трафик, конверсии, стоимость
-            привлечения клиента. У вас уже есть какие-то данные?
-            <div class="message-time">12:38</div>
-        </div>
-
-        <!-- Исходящее сообщение (короткое, пользователь) -->
-        <div class="message outgoing">
-            Есть базовые метрики, но они не структурированы. Нужно разобраться.
-            <div class="message-time">12:40</div>
-        </div>
-
-        <!-- Входящее сообщение (длинное, ИИ) -->
-        <div class="message incoming">
-            Понял. Тогда предлагаю начать с создания простой воронки: источник → лид → квалификация → сделка. Это
-            позволит увидеть, где именно теряются клиенты. После этого можно будет подключить автоматизацию и
-            прогнозирование роста.
-            <div class="message-time">12:42</div>
-        </div>
-
-        <!-- Входящее сообщение (ИИ) -->
-        <div class="message incoming">
-            Кстати, если удобнее — могу провести экспресс-аудит текущей модели и предложить стратегию развития. Хотите
-            попробовать?
-            <div class="message-time">12:45</div>
-        </div>
-
-        <!-- Исходящее сообщение (короткое, пользователь) -->
-        <div class="message outgoing">
-            Есть базовые метрики, но они не структурированы. Нужно разобраться.
-            <div class="message-time">12:40</div>
-        </div>
-        <div class="message incoming">
-            <div id="typing-indicator" class="typing-indicator">
-
+            <div class="typing-indicator">
                 <span class="dots">
                     <span></span><span></span><span></span>
                 </span>
-
                 печатает
-
             </div>
         </div>
-
-
     </main>
 
     <div class="glow-bottom"></div>
 
-    <!-- Поле ввода -->
     <div class="form-block">
         <div class="block-question-field">
             <textarea class="question-field" placeholder="Задайте свой вопрос..." rows="1"></textarea>
@@ -447,47 +329,46 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
-        const textarea = document.querySelector('.question-field');
-        const formBlock = document.querySelector('.form-block');
-        const chat = document.getElementById('chat');
-
-        // Функция прокрутки чата вниз
-        function scrollToBottom() {
-            chat.scrollTop = chat.scrollHeight;
-        }
-
-        // Прокручиваем вниз сразу при загрузке страницы
-        window.addEventListener('load', scrollToBottom);
-
-        // Прокручиваем вниз каждый раз, когда меняется содержимое main
-        // (очень полезно, когда вы добавляете новые сообщения через JS)
-        const observer = new MutationObserver(scrollToBottom);
-        observer.observe(chat, { childList: true, subtree: true });
-
-        // Авто-рост textarea
-        function adjustHeight() {
-            textarea.style.height = 'auto';
-            const newHeight = textarea.scrollHeight;
-
-            // Если высота текста превышает 140px — включаем скролл
-            if (newHeight > 140) {
-                textarea.style.overflowY = 'auto';
-                textarea.style.height = '140px';
-            } else {
-                // Пока текст помещается — скролла нет
-                textarea.style.overflowY = 'hidden';
-                textarea.style.height = newHeight + 'px';
-            }
-        }
-
-
-        textarea.addEventListener('input', adjustHeight);
-        adjustHeight(); // Инициализация при загрузке
-
-        // Опционально: при фокусе тоже прокрутить вниз (удобно на мобильных)
-        textarea.addEventListener('focus', scrollToBottom);
+        (function() {
+            'use strict';
+            
+            const textarea = document.querySelector('.question-field');
+            const chat = document.getElementById('chat');
+            
+            if (!textarea || !chat) return;
+            
+            const scrollToBottom = () => {
+                chat.scrollTop = chat.scrollHeight;
+            };
+            
+            const adjustHeight = () => {
+                textarea.style.height = 'auto';
+                const newHeight = textarea.scrollHeight;
+                
+                if (newHeight > 140) {
+                    textarea.style.overflowY = 'auto';
+                    textarea.style.height = '140px';
+                } else {
+                    textarea.style.overflowY = 'hidden';
+                    textarea.style.height = newHeight + 'px';
+                }
+            };
+            
+            // Event listeners
+            window.addEventListener('load', scrollToBottom);
+            textarea.addEventListener('input', adjustHeight);
+            textarea.addEventListener('focus', scrollToBottom);
+            
+            // MutationObserver for new messages
+            const observer = new MutationObserver(scrollToBottom);
+            observer.observe(chat, { 
+                childList: true, 
+                subtree: true 
+            });
+            
+            // Initial adjustments
+            adjustHeight();
+        })();
     </script>
 </body>
-
 </html>

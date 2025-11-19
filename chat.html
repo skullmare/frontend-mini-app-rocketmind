@@ -408,6 +408,7 @@
 
 
         textarea.addEventListener('input', adjustHeight);
+        adjustHeight(); // Инициализация при загрузке
 
         // Опционально: при фокусе тоже прокрутить вниз (удобно на мобильных)
         textarea.addEventListener('focus', scrollToBottom);

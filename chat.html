@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Чат</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -28,14 +30,20 @@
             box-sizing: border-box;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Roboto Condensed', sans-serif;
             font-weight: 500;
             text-transform: uppercase;
             color: var(--text-primary);
         }
 
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -257,19 +265,29 @@
             animation: blink 1.4s infinite both;
         }
 
-        .dots span:nth-child(1) { animation-delay: 0s; }
-        .dots span:nth-child(2) { animation-delay: 0.2s; }
-        .dots span:nth-child(3) { animation-delay: 0.4s; }
+        .dots span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes blink {
             0% {
                 opacity: 0.2;
                 transform: translateY(0px);
             }
+
             20% {
                 opacity: 1;
                 transform: translateY(-2px);
             }
+
             100% {
                 opacity: 0.2;
                 transform: translateY(0px);
@@ -305,7 +323,51 @@
             Привет! Думаю над масштабированием проекта, но пока не уверен, с чего лучше начать.
             <div class="message-time">12:36</div>
         </div>
-        
+
+        <div class="message incoming">
+            Отличная цель! Давайте для начала определим, какие каналы привлечения клиентов работают у вас сейчас лучше
+            всего.
+            <div class="message-time">12:37</div>
+        </div>
+
+        <div class="message outgoing">
+            В основном это сарафанное радио и немного контекстной рекламы. Но хочется выйти на новый уровень.
+            <div class="message-time">12:39</div>
+        </div>
+
+        <div class="message incoming">
+            Понимаю. Тогда предлагаю рассмотреть стратегию контент-маркетинга и усиление присутствия в социальных сетях.
+            Это поможет привлечь более широкую аудиторию.
+            <div class="message-time">12:41</div>
+        </div>
+
+        <div class="message outgoing">
+            Звучит интересно, но у нас нет ресурсов для создания большого количества контента.
+            <div class="message-time">12:43</div>
+        </div>
+
+        <div class="message incoming">
+            Это распространённая ситуация. Начнем с малого: можно адаптировать уже имеющиеся у вас материалы и сделать
+            фокус на качестве, а не на количестве.
+            <div class="message-time">12:45</div>
+        </div>
+
+        <div class="message outgoing">
+            Хорошо, давайте попробуем. С чего посоветуете начать конкретно на этой неделе?
+            <div class="message-time">12:46</div>
+        </div>
+
+        <div class="message incoming">
+            Составьте список часто задаваемых вопросов от ваших клиентов. Ответы на них станут отличной базой для первых
+            полезных постов.
+            <div class="message-time">12:48</div>
+        </div>
+
+        <div class="message outgoing">
+            Отличная идея! Так и сделаю. Спасибо за конкретный совет! 👍
+            <div class="message-time">12:50</div>
+        </div>
+
         <div class="message incoming">
             <div class="typing-indicator">
                 <span class="dots">
@@ -329,22 +391,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        (function() {
+        (function () {
             'use strict';
-            
+
             const textarea = document.querySelector('.question-field');
             const chat = document.getElementById('chat');
-            
+
             if (!textarea || !chat) return;
-            
+
             const scrollToBottom = () => {
                 chat.scrollTop = chat.scrollHeight;
             };
-            
+
             const adjustHeight = () => {
                 textarea.style.height = 'auto';
                 const newHeight = textarea.scrollHeight;
-                
+
                 if (newHeight > 140) {
                     textarea.style.overflowY = 'auto';
                     textarea.style.height = '140px';
@@ -353,22 +415,23 @@
                     textarea.style.height = newHeight + 'px';
                 }
             };
-            
+
             // Event listeners
             window.addEventListener('load', scrollToBottom);
             textarea.addEventListener('input', adjustHeight);
             textarea.addEventListener('focus', scrollToBottom);
-            
+
             // MutationObserver for new messages
             const observer = new MutationObserver(scrollToBottom);
-            observer.observe(chat, { 
-                childList: true, 
-                subtree: true 
+            observer.observe(chat, {
+                childList: true,
+                subtree: true
             });
-            
+
             // Initial adjustments
             adjustHeight();
         })();
     </script>
 </body>
+
 </html>

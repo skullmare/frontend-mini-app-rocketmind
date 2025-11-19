@@ -188,6 +188,28 @@
             box-sizing: border-box;
             min-height: 60px;
             transition: padding 0.2s ease;
+            /* Эти 3 строки — магия плавной прокрутки как в мессенджерах */
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #555 transparent;
+        }
+
+        /* Красивый скроллбар для WebKit (Chrome, Safari, новые Edge) */
+        .form-block::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .form-block::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .form-block::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 3px;
+        }
+
+        .form-block::-webkit-scrollbar-thumb:hover {
+            background: #777;
         }
 
         .block-question-field {
@@ -209,7 +231,8 @@
             font-size: 16px;
             line-height: 1.45;
             color: #E0E0E0;
-            overflow-y: auto;
+            overflow-y: hidden;
+            box-sizing: border-box;
         }
 
         .question-field::placeholder {
@@ -370,9 +393,19 @@
         // Авто-рост textarea
         function adjustHeight() {
             textarea.style.height = 'auto';
-            const scrollHeight = textarea.scrollHeight;
-            textarea.style.height = (scrollHeight > 140 ? 140 : scrollHeight) + 'px';
+            const newHeight = textarea.scrollHeight;
+
+            // Если высота текста превышает 140px — включаем скролл
+            if (newHeight > 140) {
+                textarea.style.overflowY = 'auto';
+                textarea.style.height = '140px';
+            } else {
+                // Пока текст помещается — скролла нет
+                textarea.style.overflowY = 'hidden';
+                textarea.style.height = newHeight + 'px';
+            }
         }
+
 
         textarea.addEventListener('input', adjustHeight);
 

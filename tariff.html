@@ -182,6 +182,59 @@
         .content-block-last {
             border-bottom: none;
         }
+
+        .element-list {
+            font-size: 14px;
+            font-weight: 300;
+            font-style: light;
+            color: #A9A9A9;
+            line-height: 160%;
+        }
+
+        /* Button block */
+        .button-block {
+            width: 100%;
+            text-align: center;
+        }
+
+        .button-block .button-subscribe {
+            background: #FFCC00;
+            color: black;
+            border: none;
+            height: 44px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto;
+            font-family: Roboto Condensed;
+            font-weight: 700;
+            font-style: Bold;
+            font-size: 14px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: uppercase;
+        }
+        .button-block .button-active {
+            background: #372558;
+            color: #A9A9A9;
+            border: none;
+            height: 44px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto;
+            font-family: Roboto Condensed;
+            font-weight: 700;
+            font-style: Bold;
+            font-size: 14px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
@@ -200,46 +253,39 @@
     </nav>
     <div class="glow"></div>
     <div class="content-block">
-        <h2 style="margin: 10px 0px; font-size: 24px;">ПРОФИЛЬ</h2>
+        <h2 style="margin: 10px 0px; font-size: 24px;">ТАРИФЫ</h2>
+        <div style="color: #A9A9A9; font-weight: 300; font-size: 14px;">Выберите подходящий тарифный план </div>
+    </div>
+    <div class="content-block d-flex flex-column">
+        <div style="font-weight: 700; font-size: 14px; color: #A9A9A9; letter-spacing: 0%;">
+            БЕСПЛАТНЫЙ
+        </div>
+        <h2 style="margin: 10px 0px; font-size: 24px;">0 ₽/месяц</h2>
+        <div class="d-flex flex-column gap-1">
+            <div class="element-list">- 10 бесплатных сообщений</div>
+            <div class="element-list">- Базовые функции бота Лида</div>
+            <div class="element-list">- Стандартное время ответа</div>
+        </div>
     </div>
     <div class="content-block d-flex align-items-center">
-        <div class="avatar-block">
-            <img src="img/person.svg" alt="profile icon">
-        </div>
-        <div class="info-block">
-            Имя Фамилия
-        </div>
+        <div class="button-block"><button id="button-active" class="button-active">АКТИВИРОВАН</button></div>
     </div>
-    <div class="content-block">
-        <div class="mb-3" style="font-weight: 700; font-size: 14px; color: #A9A9A9; letter-spacing: 0%;">ВАША РОЛЬ:
+    <div class="content-block d-flex flex-column">
+        <div style="font-weight: 700; font-size: 14px; color: #A172F8; letter-spacing: 0%;">
+            ПРЕМИУМ
         </div>
-        <div class="d-flex align-items-center">
-            <div class="add-role">
-                Добавить роль +
-            </div>
-            <div class="add-role">
-                Добавить роль +
-            </div>
+        <h2 style="margin: 10px 0px; font-size: 24px;">1000 ₽/месяц</h2>
+        <div class="d-flex flex-column gap-1">
+            <div class="element-list">- Неограниченные сообщения</div>
+            <div class="element-list">- Приоритетная поддержка</div>
+            <div class="element-list">- Быстрое время ответа</div>
+            <div class="element-list">- Расширенные функции бота</div>
+            <div class="element-list">- Персонализированные ответы</div>
         </div>
     </div>
-    <div class="content-block">
-        <div class="mb-3" style="font-weight: 700; font-size: 14px; color: #A9A9A9; letter-spacing: 0%;">СФЕРА
-            ДЕЯТЕЛЬНОСТИ:</div>
-        <div class="input-block">
-            <input class="person-activity" type="text" placeholder="Укажите вашу сферу деятельности..">
-        </div>
+    <div class="content-block d-flex align-items-center">
+        <div class="button-block"><button id="button-subscribe" class="button-subscribe">НАЧАТЬ</button></div>
     </div>
-    <div class="content-block">
-        <a class="link-corporate-page" href="tariff.html">Тарифы</a>
-
-    </div>
-    <div class="content-block content-block-last d-flex flex-column gap-3">
-        <a class="link-corporate-page" href="">Политика конфиденциальности</a>
-        <a class="link-corporate-page" href="">Условия использования</a>
-        <a class="link-corporate-page" href="">О сервисе</a>
-
-    </div>
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

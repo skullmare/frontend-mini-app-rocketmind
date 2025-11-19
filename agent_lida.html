@@ -140,14 +140,19 @@
             font-size: 14px;
             text-transform: uppercase;
         }
+
+        .prev img {
+            margin-left: 15px;
+            height: 24px;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar">
         <div class="container-fluid d-flex justify-content-between px-0">
-            <a class="navbar-brand" href="agents_list.html">
-                <img src="img/Logo container.svg" alt="Logo">
+            <a class="prev" href="agents_list.html">
+                <img src="img/Rectangle 42215.svg" alt="назад">
             </a>
             <a class="navbar-account" href="#">
                 <div class="account-icon">
@@ -180,10 +185,12 @@
 
         <div class="content-block content-block-last">
             <p style="font-weight: 300; font-size: 16px; line-height: 130%; color: #A9A9A9; margin: 0px 0px 12px 10px;">
-                Помогает быстро формулировать, <br>приоритизировать и проверять <br>управленческие гипотезы <br>по методике
+                Помогает быстро формулировать, <br>приоритизировать и проверять <br>управленческие гипотезы
+                <br>по методике
                 Rocketmind.
                 <br><br>
-                Определяет метрики успеха, <br>предлагает форматы <br>экспериментов и делает выводы,<br> превращая идеи в конкретные<br>
+                Определяет метрики успеха, <br>предлагает форматы <br>экспериментов и делает выводы,<br> превращая идеи
+                в конкретные<br>
                 управленческие решения.
             </p>
         </div>
@@ -197,7 +204,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-            <script>
+    <script>
         document.querySelector('#button-go').addEventListener('click', () => {
             window.location.href = 'chat.html';
         });
